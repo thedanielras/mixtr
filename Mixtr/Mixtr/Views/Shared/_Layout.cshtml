@@ -27,29 +27,25 @@
     <meta name="theme-color" content="#333333">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
-            Mixtr
-        </a>
-        <button id="navbar_addPlaylistBtn" class="btn btn btn-outline-light" data-toggle="modal" data-target="#add-playlist-modal">Add playlist</button>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
-
-    <footer class="footer mt-auto py-3 bg-dark">
-        <div class="container text-center">
-            <span class="text-muted">Copyright &copy;@DateTime.Now.Year - Mixtr</span>
-        </div>
-    </footer>
     <div id="preloader">
         <div id="loader"></div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @Scripts.Render("~/bundles/mixtr")
-    <script src="https://www.youtube.com/iframe_api"></script>
+    @Html.Partial("_TopBar")
+    <div class="body-content">
+        <div class="wrapper">
+            @RenderBody()
+        </div>
+    </div>
+    @Html.Partial("_Footer")
+
+    <div style="display:none;">
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/mixtr")
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </div>
+
 </body>
 </html>
