@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mixtr", "Mixtr\Mixtr.csproj", "{10828D39-3B91-4DBF-963F-2CD2414EEA57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10828D39-3B91-4DBF-963F-2CD2414EEA57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10828D39-3B91-4DBF-963F-2CD2414EEA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10828D39-3B91-4DBF-963F-2CD2414EEA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10828D39-3B91-4DBF-963F-2CD2414EEA57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24B51474-40B7-4B7E-9077-F6BB9C9BC74B}
+	EndGlobalSection
+EndGlobal
