@@ -26,8 +26,12 @@ namespace Mixtr
                       "~/Scripts/mixtr.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Lib/Bootstrap/bootstrap.css",
+                      "~/Content/Post.css",
+                      "~/Content/Preloader.css",
+                      "~/Content/TopBar.css",
+                      "~/Content/Footer.css",
+                      "~/Content/Site.css"));
         }
     }
 }

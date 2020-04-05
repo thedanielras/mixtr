@@ -1,0 +1,9 @@
+﻿#rollBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-entity {
+    padding: 15px 0;
+}
