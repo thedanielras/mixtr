@@ -4,6 +4,49 @@
     align-items: center;
 }
 
-.player-entity {
-    padding: 15px 0;
+.post:first-of-type {
+    margin-top: 75px;
+}
+
+.post:last-of-type {
+    margin-bottom: 25px;
+}
+
+.post {
+    margin: 15px auto;
+    border-radius: 4px;
+    width: 550px;
+    padding: 20px;
+    background: #333336;
+    color: #F2FFFF;
+}
+
+.yt-player-container {
+    padding-bottom: 20px;
+
+}
+
+.post__actions {
+    padding: 12px 0; 
+    border-top: 1px solid #444446;
+    display: flex;
+    line-height: 24px;
+}
+
+.post__likes {
+    display: flex;
+    align-items: center;
+
+}
+
+.post__like-img {
+    width: 20px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.post__likes-count {
+    color: #999;
+    font-weight: 500;
+    font-size: 14px;
 }

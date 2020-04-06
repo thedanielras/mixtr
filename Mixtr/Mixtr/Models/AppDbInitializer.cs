@@ -10,10 +10,9 @@ namespace Mixtr.Models
     {
         protected override void Seed(AppContext db)
         {
+            db.Posts.Add(new Post() { Title = "Test 1", Playlist = new Playlist() { Url = "J4WIlBoKTrI", IsSingleTrack = true } });
+            db.Posts.Add(new Post() { Title = "Test 2", Playlist = new Playlist() { Url = "PL3485902CC4FB6C67", IsSingleTrack = false } });
 
-            db.Playlists.Add(new Playlist { Name = "Tracy Chapman - Fast Car", Url = "J4WIlBoKTrI", IsSingleVideo = true });
-            db.Playlists.Add(new Playlist { Name = "The Cardigans - My Favourite Game Stone Version", Url = "PL3485902CC4FB6C67", IsSingleVideo = false });
-            
             base.Seed(db);
         }
     }
