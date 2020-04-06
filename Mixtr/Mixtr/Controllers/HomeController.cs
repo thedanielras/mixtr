@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Mixtr.Controllers
 {
@@ -31,6 +32,17 @@ namespace Mixtr.Controllers
             }
 
             return Json(listOfPlaylists, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetPosts()
+        {
+            List<Post> listOfPosts;
+
+            IEnumerable<Post> posts = db.Posts.Include(p => p.Playlist);
+            listOfPosts = posts.ToList();
+
+            return Json(listOfPosts, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

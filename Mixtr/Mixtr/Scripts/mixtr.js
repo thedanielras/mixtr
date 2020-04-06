@@ -1,65 +1,33 @@
 ﻿let Mixtr = function () {
     let _this = this;
-    let _arrPlaylists = [];
-    let playersCount = 0;
+    let _arrPosts = [];
 
     this.onReady = function () {
-        _this.loadPlayLists();
+        _this.loadPosts();
     };
 
-    this.loadPlayLists = function () {
+    this.loadPosts = function () {
         $.ajax({
-            url: "/Home/GetPlaylists"
+            url: "/Home/GetPosts"
         }).done(function (data) {
-            _arrPlaylists = data;
-            if (_arrPlaylists.length) _this.initPlayers();
+            _arrPosts = data;
+            if (_arrPosts.length) _this.init();
         }).fail(function () {
             alert("Fail");
         });
     };
 
-    this.initPlayers = function () {
-        for (let i = 0; i < _arrPlaylists.length; i++) {
-            let thisPlaylist = _arrPlaylists[i];
-            if (thisPlaylist.Url)
-                _this.loadPlayer(thisPlaylist);
-        }
+    this.init = function () {
+        for (let i = 0; i < _arrPosts.length; i++) {
+            let thisPost;
+
+            try {
+                thisPost = new Post(_arrPosts[i]);
+            } catch (e) { }
+        }       
 
         setTimeout(function () { $("#preloader").hide() }, 1500);
-    };
-
-    this.loadPlayer = function (playlistObj) {
-        let playersContainer = document.getElementById('rollBar');
-        let playerElementId = _this.getDistinctId();
-
-        let playerElement = document.createElement('div');
-        playerElement.setAttribute('id', playerElementId);
-        playerElement.classList.add('player-entity');
-
-        playersContainer.appendChild(playerElement);
-
-        // 3 - load new player
-        let playerParams = {
-            height: '390'
-            , width: '640'
-        };
-
-        if (playlistObj.IsSingleVideo) playerParams.videoId = playlistObj.Url;
-        else playerParams.playerVars = {
-            listType: "playlist",
-            list: playlistObj.Url
-        }
-
-        new YT.Player(playerElementId, playerParams);
-    };
-
-    this.getDistinctId = function () {
-        let playerId = "Player_Index_" + playersCount;
-        playersCount++;
-
-        return playerId;
-    };
-
+    };   
 }
 
 function onYouTubeIframeAPIReady() {
@@ -67,30 +35,12 @@ function onYouTubeIframeAPIReady() {
     Mixtr.onReady();
 }
 
-$(document).ready(function () {
+function checkStatus() {
     //check if status succes then show alert
     if (getUrlParameter("status") === "success")
         showAlert('', 'Playlist Added');
-});
-
-function showAlert(statusParam, message) {
-    let alertElement = "<div class='alert alert-success fade show'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Success! </b><span></span></div>";
-    alertElement = $(alertElement);
-    alertElement.find('span').text(message);
-    $("#alerts-container").append(alertElement);
 }
 
-function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1];
-        }
-    }
-};
+$(document).ready(function () {
+    checkStatus();
+});
