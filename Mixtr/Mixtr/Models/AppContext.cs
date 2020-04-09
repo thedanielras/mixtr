@@ -10,5 +10,6 @@ namespace Mixtr.Models
     public class AppContext : DbContext
     {
         public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }
