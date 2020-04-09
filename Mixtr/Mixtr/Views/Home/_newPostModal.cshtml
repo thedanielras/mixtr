@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-                @using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new {@id = "form-new-post" }))
+                @using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new { @id = "form-new-post" }))
                 {
                     <div class="form-group row">
                         @Html.LabelFor(m => m.Title, new { @class = "col-sm-2 col-form-label" })
@@ -29,6 +29,10 @@
                         @Html.CheckBoxFor(m => m.Playlist.IsSingleTrack)
                         @Html.Label("IsSingleTrack", "Is single video?")
                     </div>
+                    <div class="form-text text-info">Currently supported:</div>
+                    <ul class="form-text text-info">
+                        <li>Youtube: video Id, playlist Id</li>
+                    </ul>
                 }
             </div>
             <div class="modal-footer">
