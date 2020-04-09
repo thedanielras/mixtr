@@ -10,7 +10,7 @@ namespace Mixtr.Controllers
 {
     public class HomeController : Controller
     {
-        Models.AppContext db = new Models.AppContext();
+        ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
