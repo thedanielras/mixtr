@@ -11,6 +11,5 @@ namespace Mixtr.Models
         public int Id { get; set; }
         [Required]
         public string Url { get; set; }
-        public bool IsSingleTrack { get; set; }
     }
 }

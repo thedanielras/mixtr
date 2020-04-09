@@ -8,6 +8,7 @@
     this.playlist = postObject.Playlist;
     this.likesCount = postObject.LikesCount;
     this.youtubePlayer;
+    this.isValid = true;
 
     let initHeader = function () {
         // title
@@ -29,6 +30,11 @@
         try {
             _this.youtubePlayer = new YoutubePlayer(_this.playlist);
         } catch (e) { alert("Failed initializing player"); }
+
+        if (!_this.youtubePlayer.isValid) {
+            alert("Failed initializing player");
+            _this.isValid = false;
+        }
 
         let body;
 
@@ -76,7 +82,7 @@
         initHeader();
         initBody();
         initActions();
-
+        if (!_this.isValid) return;
         $("#feed").append(postContainer);
         _this.youtubePlayer.init();
     }
