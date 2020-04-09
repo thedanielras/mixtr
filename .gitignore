@@ -3,5 +3,6 @@
 ################################################################################
 
 /.vs
-/Mixtr/Mixtr/bin/Release/Publish
-/Mixtr/Mixtr/obj
+/Mixtr/.vs/
+/Mixtr/Mixtr/bin/
+/Mixtr/Mixtr/obj/

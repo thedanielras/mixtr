@@ -6,7 +6,6 @@
     <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
     <link rel="apple-touch-icon" sizes="57x57" href="/Content/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/Content/favicon/apple-icon-60x60.png">
@@ -39,13 +38,15 @@
     </div>
     @Html.Partial("_Footer")
 
-    <div style="display:none;">
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-        @Scripts.Render("~/bundles/mixtr")
-        <script src="https://www.youtube.com/iframe_api"></script>
-    </div>
+<div style="display:none;">
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/app")
+    <script src="https://www.youtube.com/iframe_api"></script>
+</div>
 
 </body>
 </html>
