@@ -46,10 +46,14 @@ namespace Mixtr.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddPlaylist(Playlist playlist)
+        public ActionResult AddPost(Post post)
         {
-            db.Playlists.Add(playlist);
-            db.SaveChanges();
+
+            if(ModelState.IsValid)
+            {
+                db.Posts.Add(post);
+                db.SaveChanges();
+            }            
 
             return RedirectToAction("Index", new { status = "success" });
         }

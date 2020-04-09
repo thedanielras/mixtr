@@ -38,7 +38,7 @@ function onYouTubeIframeAPIReady() {
 function checkStatus() {
     //check if status succes then show alert
     if (getUrlParameter("status") === "success")
-        showAlert('', 'Playlist Added');
+        showAlert('', 'Post Created');
 }
 
 $(document).ready(function () {

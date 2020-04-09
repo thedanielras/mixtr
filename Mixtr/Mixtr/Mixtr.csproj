@@ -137,6 +137,10 @@
     <Compile Include="Migrations\202004061145559_InitialCreate.designer.cs">
       <DependentUpon>202004061145559_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091411366_MigrateDB.cs" />
+    <Compile Include="Migrations\202004091411366_MigrateDB.designer.cs">
+      <DependentUpon>202004091411366_MigrateDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
@@ -311,6 +315,7 @@
     <Content Include="Scripts\Libs\popper-utils.js.map" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\_newPostModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,6 +334,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004061145559_InitialCreate.resx">
       <DependentUpon>202004061145559_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091411366_MigrateDB.resx">
+      <DependentUpon>202004091411366_MigrateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
