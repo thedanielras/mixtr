@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace Mixtr.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();

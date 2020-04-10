@@ -198,6 +198,7 @@
     <Content Include="Content\Footer.css" />
     <Content Include="Content\icons\like-filled.svg" />
     <Content Include="Content\icons\like.svg" />
+    <Content Include="Content\icons\robot.svg" />
     <Content Include="Content\Lib\Bootstrap\bootstrap.css" />
     <Content Include="Content\favicon\android-icon-144x144.png" />
     <Content Include="Content\favicon\android-icon-192x192.png" />
