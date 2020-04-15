@@ -8,7 +8,6 @@ using System.Data.Entity;
 
 namespace Mixtr.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -46,6 +45,7 @@ namespace Mixtr.Controllers
             return Json(listOfPosts, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult AddPost(Post post)
         {
