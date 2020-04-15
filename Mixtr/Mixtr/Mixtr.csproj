@@ -196,6 +196,7 @@
   <ItemGroup>
     <Content Include="Content\Feed.css" />
     <Content Include="Content\Footer.css" />
+    <Content Include="Content\icons\google.svg" />
     <Content Include="Content\icons\like-filled.svg" />
     <Content Include="Content\icons\like.svg" />
     <Content Include="Content\icons\robot.svg" />

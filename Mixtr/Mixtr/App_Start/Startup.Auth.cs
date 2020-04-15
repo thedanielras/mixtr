@@ -58,11 +58,11 @@ namespace Mixtr
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "274830630819-904lolo12ovecr0t6uuhgjcrqtckchmh.apps.googleusercontent.com",
+                ClientSecret = "F_MCBy72rQu62rIT6hT1pYRU"
+            });
         }
     }
 }
