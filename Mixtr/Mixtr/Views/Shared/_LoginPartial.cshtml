@@ -11,7 +11,7 @@
         {
             @Html.AntiForgeryToken()
             <div class="dropdown-menu text-center authentication-dropdown-menu dropdown-content" style="display:none;">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
                 <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             </div>
         }
