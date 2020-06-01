@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using Mixtr.Utils;
 using Newtonsoft.Json;
 
 namespace Mixtr.Controllers
@@ -78,14 +79,23 @@ namespace Mixtr.Controllers
         [HttpPost]
         public ActionResult AddPost(Post post)
         {
+            bool isStatusOk = false;
+
             if (ModelState.IsValid)
             {
                 post.UserId = User.Identity.GetUserId();
-                db.Posts.Add(post);
-                db.SaveChanges();
+                bool urlValidationResult = YoutubeUrlValidator.CheckIfValid(post.Playlist.Url);
+                if (urlValidationResult)
+                {
+                    string youtubeId = YoutubeUrlValidator.GetId(post.Playlist.Url);
+                    if (youtubeId != null) post.Playlist.Url = youtubeId;
+                    isStatusOk = true;
+                    db.Posts.Add(post);
+                    db.SaveChanges();
+                }
             }
 
-            return RedirectToAction("Index", new {status = "success"});
+            return RedirectToAction("Index", new {status = isStatusOk ? "success" : "fail"});
         }
     }
 }
