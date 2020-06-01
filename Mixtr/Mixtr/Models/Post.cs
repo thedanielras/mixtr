@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using System.Web.Script.Serialization;
 
 namespace Mixtr.Models
 {
@@ -19,5 +22,9 @@ namespace Mixtr.Models
         [ScaffoldColumn(false)]
         public int? PlaylistId { get; set; }
         public Playlist Playlist { get; set; }
+        [ForeignKey("UserWhoPosted")]
+        public string UserId { get; set; }
+        [JsonIgnore]
+        public ApplicationUser UserWhoPosted { get; set; }
     }
 }
