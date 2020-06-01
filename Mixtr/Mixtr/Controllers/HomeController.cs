@@ -97,5 +97,29 @@ namespace Mixtr.Controllers
 
             return RedirectToAction("Index", new {status = isStatusOk ? "success" : "fail"});
         }
+        
+        [Authorize]
+        [HttpPost]
+        public void AddLike(int postId)
+        {
+            var post = db.Posts.SingleOrDefault(p => p.Id == postId);
+            if (post != null) 
+            {
+                post.LikesCount++;
+            }
+
+            db.SaveChanges();
+        }
+        
+        public void RemoveLike(int postId)
+        {
+            var post = db.Posts.SingleOrDefault(p => p.Id == postId);
+            if (post != null) 
+            {
+                post.LikesCount--;
+            }
+
+            db.SaveChanges();
+        }
     }
 }
