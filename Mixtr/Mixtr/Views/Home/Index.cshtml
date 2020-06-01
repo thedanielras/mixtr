@@ -1,5 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Mixter";
+    ViewBag.Title = "Mixtr";
+}
+@section scripts
+{
+    <script>
+      let isUserAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+    </script>
 }
 
 <div id="alerts-container" style="z-index:998;position:fixed;top:20px;left:0;width:100%;padding:0 20%;"></div>
