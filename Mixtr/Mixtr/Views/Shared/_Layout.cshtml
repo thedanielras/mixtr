@@ -38,12 +38,13 @@
     </div>
     @Html.Partial("_Footer")
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/app")
-    <script src="https://www.youtube.com/iframe_api"></script>
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/app")
+    
 </body>
 </html>
