@@ -66,7 +66,22 @@
         likesImg.classList.add("post__like-img");
         likesImg.setAttribute("src", "../../Content/icons/like.svg");
         $(likesImg).click(function () {
-            $(this).attr("src", "../../Content/icons/like-filled.svg");
+            if(!isUserAuthorized) {
+                document.location = "/Account/Login";
+                return;
+            }
+            
+            if($(this).attr("src") === "../../Content/icons/like.svg") {
+                $(this).attr("src", "../../Content/icons/like-filled.svg");
+                _this.likesCount++;    
+                $.post("/Home/AddLike", {postId: _this.id}, null, "json");
+            } else {
+                $(this).attr("src", "../../Content/icons/like.svg");
+                _this.likesCount--;
+                $.post("/Home/RemoveLike", {postId: _this.id}, null, "json");
+            }
+            
+            $(this).parent().find(".post__likes-count").text(_this.likesCount);
         });
         likes.appendChild(likesImg);
         likesCount = document.createElement("span");
