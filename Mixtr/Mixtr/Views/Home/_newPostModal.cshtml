@@ -10,22 +10,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                @using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new { @id = "form-new-post" }))
+                @Html.ValidationSummary("", new {@class = "text-danger"})
+                @using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new {@id = "form-new-post"}))
                 {
                     <div class="form-group row">
-                        @Html.LabelFor(m => m.Title, new { @class = "col-sm-2 col-form-label" })
-                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "col-10 form-text text-danger" })
+                        @Html.LabelFor(m => m.Title, new {@class = "col-sm-2 col-form-label"})
+                        @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Title, "", new {@class = "col-10 form-text text-danger"})
                     </div>
                     <div class="form-group row">
-                        @Html.LabelFor(m => m.Playlist.Url, new { @class = "col-sm-2 col-form-label" })
-                        @Html.TextBoxFor(m => m.Playlist.Url, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Playlist.Url, "", new { @class = "col-10 form-text text-danger" })
+                        @Html.LabelFor(m => m.Playlist.Url, new {@class = "col-sm-2 col-form-label"})
+                        @Html.TextBoxFor(m => m.Playlist.Url, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Playlist.Url, "", new {@class = "col-10 form-text text-danger"})
                     </div>
                     <div class="form-text text-info">Currently supported:</div>
                     <ul class="form-text text-info">
-                        <li>Youtube: video Id, playlist Id</li>
+                        <li>Youtube</li>
                     </ul>
                 }
             </div>
