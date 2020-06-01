@@ -20,7 +20,7 @@ namespace Mixtr
                         "~/Scripts/Libs/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/Libs/bootstrap.js"));
+                      "~/Scripts/Libs/bootstrap.bundle.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/utils.js",

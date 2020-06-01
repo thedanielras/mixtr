@@ -23,11 +23,15 @@
 
             try {
                 thisPost = new Post(_arrPosts[i]);
-            } catch (e) { }
-        }       
+            } catch (e) {
+            }
+        }
 
-        setTimeout(function () { $("#preloader").hide() }, 1500);
-    };   
+        setTimeout(function () {
+            $("#preloader").hide();
+            $("body").css("overflow", "auto")
+        }, 1700);
+    };
 }
 
 function onYouTubeIframeAPIReady() {
@@ -42,5 +46,22 @@ function checkStatus() {
 }
 
 $(document).ready(function () {
+    $("#dropdown-user-authentication").click(function () {
+        $(".authentication-dropdown-menu").css("left", "-" + (($(".authentication-dropdown-menu").width() / 2) - 18) + "px");
+        $(".authentication-dropdown-menu").show();
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    $(openDropdown).hide();
+                }
+                window.onclick = function () {
+                }
+            }
+        }
+    });
+
     checkStatus();
 });

@@ -22,7 +22,52 @@
     align-items: center;
 }
 
-.top-bar .btn {
-    padding: 3px 7px;
+.navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user-icon {
+    border: 1px solid #FFF;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-user-icon__img {
+    width: 100%;
+}
+
+#navbar_addPlaylistBtn {
+    margin-right: 25px;
+    padding: 3px 7px !important;
+    height: 30px;
     font-size: 14px;
+}
+
+.authentication-dropdown-menu {
+    background: #333336;
+}
+
+.authentication-dropdown-menu .dropdown-item {
+    color: #cbd3da;
+}
+
+.login-partial {
+    position: relative;
+}
+
+.authentication-dropdown-menu {
+    position: absolute;
+}
+
+.login-partial .authentication-dropdown-menu .dropdown-item:hover {
+    background-color: #19191a;
+    color: #FFF;
 }

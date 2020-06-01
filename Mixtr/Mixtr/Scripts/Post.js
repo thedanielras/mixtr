@@ -7,13 +7,15 @@
     this.title = postObject.Title;
     this.playlist = postObject.Playlist;
     this.likesCount = postObject.LikesCount;
+    this.postedBy = postObject.UserName || "admin";
     this.youtubePlayer;
     this.isValid = true;
 
     let initHeader = function () {
         // title
         let header,
-            title;
+            title,
+            createdBy;
 
         header = document.createElement("div");
         header.classList.add("post__header");
@@ -21,6 +23,10 @@
         title.classList.add("post__title");
         title.innerText = _this.title;
         header.appendChild(title);
+        createdBy = document.createElement("span");
+        createdBy.classList.add("post__by");
+        createdBy.innerText =  _this.postedBy;
+        header.appendChild(createdBy);
 
         postContainer.appendChild(header);
     };

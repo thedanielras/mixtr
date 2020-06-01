@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+
+<div class="login-partial">
+    <div class="navbar-user-icon dropbtn" id="dropdown-user-authentication">
+        <img class="navbar-user-icon__img dropbtn" src="~/Content/icons/robot.svg" />
+    </div>
+
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="dropdown-menu text-center authentication-dropdown-menu dropdown-content" style="display:none;">
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="dropdown-menu text-center authentication-dropdown-menu dropdown-content" style="display:none;">
+            @Html.ActionLink("Log in", "Login", "Account", null, new { @class = "dropdown-item" })
+            @Html.ActionLink("Register", "Register", "Account", null, new { @class = "dropdown-item" })
+        </div>
+    }
+</div>

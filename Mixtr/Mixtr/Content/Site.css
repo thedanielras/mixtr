@@ -1,6 +1,7 @@
 ﻿body {
     height: 100%;
     background: #222226;
+    overflow: hidden;
 }
 
 .body-content {

@@ -3,6 +3,10 @@
         <a class="navbar-brand" href="/">
             Mixtr
         </a>
-        <button id="navbar_addPlaylistBtn" class="btn btn btn-outline-light" data-toggle="modal" data-target="#new-post-modal">New Post</button>
+        <div class="navbar-actions">
+            <button id="navbar_addPlaylistBtn" class="btn btn btn-outline-light" data-toggle="modal" data-target="#new-post-modal">New Post</button>
+            @Html.Partial("_LoginPartial")
+        </div>
     </div>
 </nav>
+
