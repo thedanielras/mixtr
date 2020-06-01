@@ -40,9 +40,13 @@ function onYouTubeIframeAPIReady() {
 }
 
 function checkStatus() {
-    //check if status succes then show alert
-    if (getUrlParameter("status") === "success")
-        showAlert('', 'Post Created');
+    let status = getUrlParameter("status");
+    if (status === null) return;
+
+    if (status === "success")
+        showAlert(0, 'Post created');
+    else if (status === "fail")
+        showAlert(2, 'Something went wrong :(')
 }
 
 $(document).ready(function () {

@@ -1,6 +1,26 @@
 ﻿function showAlert(statusParam, message) {
-    let alertElement = "<div class='alert alert-success fade show'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Success! </b><span></span></div>";
+    let alertClassName, statusMessage;
+
+    switch (statusParam) {
+        case 0:
+            alertClassName = "alert-success";
+            statusMessage = "Success"
+            break;
+        case 1:
+            alertClassName = "alert-warning";
+            statusMessage = "Warning"
+            break;
+        case 2:
+            alertClassName = "alert-danger";
+            statusMessage = "Fail"
+            break;
+    }
+    
+    
+    let alertElement = "<div class='alert fade show'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>"
+        + statusMessage + ": </b><span></span></div>";
     alertElement = $(alertElement);
+    alertElement.addClass(alertClassName);    
     alertElement.find('span').text(message);
     $("#alerts-container").append(alertElement);
 }
