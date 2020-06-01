@@ -35,7 +35,7 @@
         // player
         try {
             _this.youtubePlayer = new YoutubePlayer(_this.playlist);
-        } catch (e) { alert("Failed initializing player"); }
+        } catch (e) { Console.log("Failed initializing player"); }
 
         if (!_this.youtubePlayer.isValid) {
             alert("Failed initializing player");
