@@ -23,10 +23,14 @@
 
             try {
                 thisPost = new Post(_arrPosts[i]);
-            } catch (e) { }
+            } catch (e) {
+            }
         }
 
-        setTimeout(function () { $("#preloader").hide() }, 1700);
+        setTimeout(function () {
+            $("#preloader").hide();
+            $("body").css("overflow", "auto")
+        }, 1700);
     };
 }
 
@@ -53,7 +57,8 @@ $(document).ready(function () {
                     var openDropdown = dropdowns[i];
                     $(openDropdown).hide();
                 }
-                window.onclick = function () { }
+                window.onclick = function () {
+                }
             }
         }
     });
