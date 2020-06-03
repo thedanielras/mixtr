@@ -7,12 +7,15 @@
     this.title = postObject.Title;
     this.playlist = postObject.Playlist;
     this.likesCount = postObject.LikesCount;
+    this.postedBy = postObject.UserName || "admin";
     this.youtubePlayer;
+    this.isValid = true;
 
     let initHeader = function () {
         // title
         let header,
-            title;
+            title,
+            createdBy;
 
         header = document.createElement("div");
         header.classList.add("post__header");
@@ -20,6 +23,10 @@
         title.classList.add("post__title");
         title.innerText = _this.title;
         header.appendChild(title);
+        createdBy = document.createElement("span");
+        createdBy.classList.add("post__by");
+        createdBy.innerText =  _this.postedBy;
+        header.appendChild(createdBy);
 
         postContainer.appendChild(header);
     };
@@ -28,7 +35,12 @@
         // player
         try {
             _this.youtubePlayer = new YoutubePlayer(_this.playlist);
-        } catch (e) { alert("Failed initializing player"); }
+        } catch (e) { Console.log("Failed initializing player"); }
+
+        if (!_this.youtubePlayer.isValid) {
+            alert("Failed initializing player");
+            _this.isValid = false;
+        }
 
         let body;
 
@@ -54,7 +66,22 @@
         likesImg.classList.add("post__like-img");
         likesImg.setAttribute("src", "../../Content/icons/like.svg");
         $(likesImg).click(function () {
-            $(this).attr("src", "../../Content/icons/like-filled.svg");
+            if(!isUserAuthorized) {
+                document.location = "/Account/Login";
+                return;
+            }
+            
+            if($(this).attr("src") === "../../Content/icons/like.svg") {
+                $(this).attr("src", "../../Content/icons/like-filled.svg");
+                _this.likesCount++;    
+                $.post("/Home/AddLike", {postId: _this.id}, null, "json");
+            } else {
+                $(this).attr("src", "../../Content/icons/like.svg");
+                _this.likesCount--;
+                $.post("/Home/RemoveLike", {postId: _this.id}, null, "json");
+            }
+            
+            $(this).parent().find(".post__likes-count").text(_this.likesCount);
         });
         likes.appendChild(likesImg);
         likesCount = document.createElement("span");
@@ -76,7 +103,7 @@
         initHeader();
         initBody();
         initActions();
-
+        if (!_this.isValid) return;
         $("#feed").append(postContainer);
         _this.youtubePlayer.init();
     }

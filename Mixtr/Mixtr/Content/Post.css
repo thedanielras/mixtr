@@ -21,9 +21,14 @@
     color: #F2FFFF;
 }
 
+.post__header {
+    padding: 0 2px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .yt-player-container {
     padding-bottom: 20px;
-
 }
 
 .post__actions {

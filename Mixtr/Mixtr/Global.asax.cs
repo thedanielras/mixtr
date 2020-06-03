@@ -14,7 +14,7 @@ namespace Mixtr
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new AppDbInitializer());
+            Database.SetInitializer(new ApplicationDbContextInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

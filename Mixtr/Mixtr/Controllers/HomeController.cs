@@ -5,53 +5,77 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
+using Mixtr.Utils;
+using Newtonsoft.Json;
 
 namespace Mixtr.Controllers
 {
     public class HomeController : Controller
     {
-        Models.AppContext db = new Models.AppContext();
+        private IAppRepository _repository;
+
+        public HomeController()
+        {
+            _repository = new AppRepository();
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult GetPlaylists()
+        public ActionResult GetPosts()
         {
-            List<Playlist> listOfPlaylists;
+            var listOfPosts = _repository.GetPostsViews();
 
             try
             {
-                IEnumerable<Playlist> playlists = db.Playlists;
-                listOfPlaylists = playlists.ToList();
+                string json = JsonConvert.SerializeObject(listOfPosts);
+                return Content(json, "application/json");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return Json(e);
+                Console.WriteLine(ex.Message);
+                return new HttpStatusCodeResult(500);
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddPost(Post post)
+        {
+            bool isStatusOk = false;
+
+            if (ModelState.IsValid)
+            {
+                post.UserId = User.Identity.GetUserId();
+                bool urlValidationResult = YoutubeUrlValidator.CheckIfValid(post.Playlist.Url);
+                if (urlValidationResult)
+                {
+                    string youtubeId = YoutubeUrlValidator.GetId(post.Playlist.Url);
+                    if (youtubeId != null) post.Playlist.Url = youtubeId;
+                    isStatusOk = true;
+
+                    _repository.AddPost(post);
+                }
             }
 
-            return Json(listOfPlaylists, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index", new {status = isStatusOk ? "success" : "fail"});
         }
 
-        [HttpGet]
-        public ActionResult GetPosts()
-        {
-            List<Post> listOfPosts;
-
-            IEnumerable<Post> posts = db.Posts.Include(p => p.Playlist);
-            listOfPosts = posts.ToList();
-
-            return Json(listOfPosts, JsonRequestBehavior.AllowGet);
-        }
-
+        [Authorize]
         [HttpPost]
-        public ActionResult AddPlaylist(Playlist playlist)
+        public void AddLike(int postId)
         {
-            db.Playlists.Add(playlist);
-            db.SaveChanges();
+            _repository.IncrementLikes(postId);
+        }
 
-            return RedirectToAction("Index", new { status = "success" });
+        public void RemoveLike(int postId)
+        {
+            _repository.DecrementLikes(postId);
         }
     }
 }

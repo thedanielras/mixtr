@@ -1,6 +1,7 @@
 ﻿body {
     height: 100%;
     background: #222226;
+    overflow: hidden;
 }
 
 .body-content {
@@ -18,4 +19,9 @@ textarea {
     width: 965px;
     height: 100%;
     margin: auto;
+}
+
+/*Validation classes*/
+.input-validation-error {
+    border-color: #dc3545;
 }

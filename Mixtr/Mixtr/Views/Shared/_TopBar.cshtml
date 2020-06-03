@@ -1,8 +1,27 @@
-﻿<nav class="top-bar">
+﻿@using System.Activities.Statements
+<nav class="top-bar">
     <div class="wrapper">
         <a class="navbar-brand" href="/">
             Mixtr
         </a>
-        <button id="navbar_addPlaylistBtn" class="btn btn btn-outline-light" data-toggle="modal" data-target="#add-playlist-modal">Add playlist</button>
+        <div class="navbar-actions">
+            
+            
+            <button id="navbar_addPlaylistBtn" 
+                    class="btn btn btn-outline-light" 
+                    data-toggle="modal" 
+                    data-target="@(User.Identity.IsAuthenticated? "#new-post-modal" : "")">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @("New post");
+                }
+                else
+                {
+                    @Html.ActionLink("New Post", "Login", "Account", null, new {@class="top-bar__new-post-anchor"} );
+                }
+            </button>
+            @Html.Partial("_LoginPartial")
+        </div>
     </div>
 </nav>
+
