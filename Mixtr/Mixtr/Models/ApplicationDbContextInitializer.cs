@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Mixtr.Models
 {
-    public class AppDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
+    public class ApplicationDbContextInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext db)
         {
