@@ -8,12 +8,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Mixtr.Models
 {
-    
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext() : base("ApplicationDbContext")
         {
+            Database.SetInitializer<ApplicationDbContext>(new ApplicationDbContextInitializer());
         }
 
         public static ApplicationDbContext Create()
