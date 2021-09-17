@@ -1,6 +1,5 @@
 # Mixtr
 ### Youtube playlist agregator app, written in asp.net 4
-Watch online @ http://6028-39974.el-alt.com/
 
 ## Overview
 ![Overview](Mixtr/img/overview.png)
